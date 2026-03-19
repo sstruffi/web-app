@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web and App - Sara Truffi Portfolio</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #fcfaf5;
+        font-family: Arial, sans-serif;
+        color: #5a3b4d;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      nav ul {
+        list-style: none;
+      }
+
+      nav ul li {
+        display: inline-block;
+        position: relative;
+        margin-right: 20px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-family: "Open Sans", sans-serif;
+        font-size: 17px;
+        color: #d14f9c;
+        padding: 8px 10px;
+        display: block;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: #ffb6db;
+      }
+
+      nav a:active {
+        color: #aa2f79;
+      }
+
+      nav a:visited {
+        color: #c6428f;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #ffffff;
+        min-width: 220px;
+        border-radius: 14px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f0dce8;
+        overflow: hidden;
+        z-index: 1000;
+      }
+
+      .dropdown-content li {
+        display: block;
+        margin: 0;
+      }
+
+      .dropdown-content a {
+        padding: 13px 16px;
+        color: #d14f9c;
+        transition: all 0.2s ease;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #efefef;
+        color: #ffb6db;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .page-header {
+        text-align: center;
+        padding: 80px 20px 40px;
+      }
+
+      .eyebrow {
+        font-size: 0.9em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #b87aa0;
+        margin-bottom: 14px;
+      }
+
+      .page-header h1 {
+        font-size: 3.4em;
+        color: #d14f9c;
+        margin-bottom: 18px;
+        line-height: 1.1;
+      }
+
+      .page-header p {
+        font-size: 1.08em;
+        color: #7a5d6d;
+        max-width: 720px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      .featured-box {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 24px;
+        padding: 48px 34px;
+        margin: 30px auto 70px;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+        border: 1px solid #f1e3ea;
+      }
+
+      .featured-box h2 {
+        text-align: center;
+        color: #d14f9c;
+        font-size: 2em;
+        margin-bottom: 36px;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 32px;
+      }
+
+      .project-card {
+        background: #fffafc;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        border: 1px solid #f3e3eb;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .project-info {
+        padding: 24px;
+      }
+
+      .project-info h3 {
+        color: #c6428f;
+        font-size: 1.35em;
+        margin-bottom: 10px;
+      }
+
+      .project-info p {
+        color: #6d5c67;
+        font-size: 0.98em;
+        line-height: 1.7;
+        margin-bottom: 22px;
+      }
+
+      .project-label {
+        display: inline-block;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #b87aa0;
+        background: #f8e8f1;
+        padding: 6px 10px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+      }
+
+      .view-button {
+        display: inline-block;
+        text-decoration: none;
+        background: transparent;
+        color: #c6428f;
+        border: 1.5px solid #d98ab7;
+        padding: 11px 18px;
+        border-radius: 999px;
+        font-size: 0.95em;
+        transition: all 0.2s ease;
+      }
+
+      .view-button:hover {
+        background-color: #d14f9c;
+        color: white;
+        border-color: #d14f9c;
+      }
+
+      footer {
+        background-color: #d14f9c;
+        color: white;
+        text-align: center;
+        padding: 22px 0;
+        margin-top: 50px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 0.95em;
+      }
+
+      @media (max-width: 700px) {
+        nav ul li {
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        .page-header {
+          padding: 50px 10px 30px;
+        }
+
+        .page-header h1 {
+          font-size: 2.4em;
+        }
+
+        .featured-box {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="work.index">Projects</a>
+            <ul class="dropdown-content">
+              <li><a href="videography.html">Videography</a></li>
+              <li><a href="branding.html">Branding</a></li>
+              <li><a href="web-app.html">Web and App</a></li>
+              <li><a href="graphic-design.html">Graphic Design</a></li>
+            </ul>
+          </li>
+
+          <li><a href="aboutme.html">About Me</a></li>
+          <li><a href="contactme.html">Contact Me</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container">
+      <section class="page-header">
+        <p class="eyebrow">Selected Work</p>
+        <h1>Web and App</h1>
+        <p>
+          Interface and product design work focused on accessibility,
+          usability, visual systems, and creating thoughtful digital experiences.
+        </p>
+      </section>
+    </div>
+
+    <div class="container">
+      <section class="featured-box">
+        <h2>Featured Projects</h2>
+
+        <div class="project-grid">
+          <div class="project-card">
+            <img src="GBDA210-MILESTONE3-1.png" alt="Preview image for Budget Bunny app project">
+            <div class="project-info">
+              <p class="project-label">UX / App Design</p>
+              <h3>Budget Bunny</h3>
+              <p>
+                A budgeting app concept designed to help users build stronger
+                financial habits through clear tracking, approachable visuals,
+                and a friendly user-centered interface.
+              </p>
+              <a href="budget-bunny.html" class="view-button">View Project</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>@ 2026 Sara Truffi - All Rights Reserved</footer>
+  </body>
+</html>
